@@ -1,5 +1,4 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 
 export default function firebaseApp() {
   const firebaseConfig = {
@@ -13,5 +12,5 @@ export default function firebaseApp() {
   };
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  console.log(app);
 }

@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   firebaseApp();
   return (
     <Provider store={store}>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </Provider>
   );
 }
