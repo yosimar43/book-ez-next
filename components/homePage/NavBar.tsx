@@ -8,7 +8,14 @@ export const NavBar: NextPage = () => {
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ["Hola", "¿Eres nuevo?", "Bienvenido a", "Book-ez"], // Strings to display
+      strings: [
+        "Hola",
+        "¿Eres nuevo?",
+        "Bienvenido",
+        "Book-ez.com",
+        "solo",
+        "Book-ez",
+      ], // Strings to display
       // Speed settings, try diffrent values untill you get good results
       startDelay: 600,
       typeSpeed: 150,
