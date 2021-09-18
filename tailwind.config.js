@@ -6,6 +6,7 @@ module.exports = {
     fontFamily: {
       quickSand: ["Quicksand", "sans-serif"],
       raleway: ["Raleway", "sans-serif"],
+      logo: ["Rock Salt", "cursive"],
     },
     extend: {},
   },
