@@ -78,6 +78,9 @@ export const NavBar: NextPage = () => {
     }
   }, [activeLink]);
 
+  let linkHoverTransition =
+    "before:block before:bg-blue-500 before:content-[''] before:absolute before:w-full before:h-px before:bottom-0 overflow-hidden before:translate-x-full hover:before:translate-x-0 ";
+
   return (
     <nav className="flex justify-evenly pt-3 px-4 sticky top-0 shadow-md bg-white flex-wrap z-50">
       <div className="flex justify-center items-center p-4 w-1/2 ">
@@ -103,7 +106,7 @@ export const NavBar: NextPage = () => {
               })
             }
             onMouseOut={() => SetActiveLink({ Height: 1, width: 1, link: 0 })}
-            className=" text-red-400 mx-4 transition-transform duration-700 hover:-translate-y-2 hover:scale-125  hover:text-red-600 "
+            className={` text-red-400 mx-4 relative transition-all duration-700 ease-out over:-translate-y-2 hover:scale-125  hover:text-red-600 ${linkHoverTransition}`}
           >
             Ingresar
           </a>
@@ -118,7 +121,7 @@ export const NavBar: NextPage = () => {
               })
             }
             onMouseOut={() => SetActiveLink({ Height: 1, width: 1, link: 0 })}
-            className="text-red-400 mx-4 transition-transform duration-700 hover:-translate-y-2 hover:scale-125  hover:text-red-600"
+            className={`text-red-400 mx-4 relative transition-all duration-700 hover:-translate-y-2 hover:scale-125 hover:text-red-600 ${linkHoverTransition}`}
           >
             Nueva cuenta
           </a>
