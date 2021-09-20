@@ -79,10 +79,10 @@ export const NavBar: NextPage = () => {
   }, [activeLink]);
 
   return (
-    <nav className="flex justify-evenly pt-3 px-4 sticky top-0 shadow-md bg-white flex-wrap">
+    <nav className="flex justify-evenly pt-3 px-4 sticky top-0 shadow-md bg-white flex-wrap z-50">
       <div className="flex justify-center items-center p-4 w-1/2 ">
         <p
-          className="w-full h-full mb-2 text-blue-400 text-4xl font-logo -rotate-3 text-left"
+          className="w-full h-full mb-2 text-blue-400 text-2xl font-logo -rotate-3 text-left sm:text-3xl md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-5xl"
           ref={el}
         ></p>
       </div>
