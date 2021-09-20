@@ -4,6 +4,8 @@ import Image from "next/image";
 import { NavBar } from "../components/homePage/NavBar";
 import { FeaturesAppDescriptions } from "../components/homePage/FeaturesAppDescriptions";
 import cohete from "../public/cohete.png";
+import JumpText from "../components/JumpText";
+import { IoIosArrowDropdown } from "react-icons/io";
 
 const Home: NextPage = () => {
   return (
@@ -30,8 +32,10 @@ const Home: NextPage = () => {
             ></path>
           </svg>
         </div>
-
-        <p className="text-center">Descubramos juntos como funciona</p>
+        <JumpText
+          text="Descubramos como funciona"
+          icon={<IoIosArrowDropdown />}
+        />
         <FeaturesAppDescriptions
           cardContent={{
             reverse: true,
