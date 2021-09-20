@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 import { NavBar } from "../components/homePage/NavBar";
 import { FeaturesAppDescriptions } from "../components/homePage/FeaturesAppDescriptions";
 import cohete from "../public/cohete.png";
@@ -24,7 +25,7 @@ const Home: NextPage = () => {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path
               fill="#0099ff"
-              fill-opacity="1"
+              fillOpacity="1"
               d="M0,288L26.7,240C53.3,192,107,96,160,74.7C213.3,53,267,107,320,149.3C373.3,192,427,224,480,213.3C533.3,203,587,149,640,149.3C693.3,149,747,203,800,192C853.3,181,907,107,960,80C1013.3,53,1067,75,1120,122.7C1173.3,171,1227,245,1280,245.3C1333.3,245,1387,171,1413,133.3L1440,96L1440,0L1413.3,0C1386.7,0,1333,0,1280,0C1226.7,0,1173,0,1120,0C1066.7,0,1013,0,960,0C906.7,0,853,0,800,0C746.7,0,693,0,640,0C586.7,0,533,0,480,0C426.7,0,373,0,320,0C266.7,0,213,0,160,0C106.7,0,53,0,27,0L0,0Z"
             ></path>
           </svg>{" "}

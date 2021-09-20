@@ -26,13 +26,13 @@ export const FeaturesAppDescriptions: NextPage<CardFeatures> = ({
 
   return (
     <div
-      className={`w-11/12 p-4 flex justify-evenly rounded-lg items-stretch shadow-md h-auto mx-auto my-8  ${isReverse}`}
+      className={`w-11/12 p-4 flex flex-wrap justify-evenly rounded-lg items-stretch shadow-md h-auto mx-auto my-8  ${isReverse}`}
     >
       <div className="w-96 h-96 rounded-3xl overflow-hidden">
         <Image src={image} alt={alt} layout="responsive" />
       </div>
       <div className="flex flex-col py-8 justify-evenly">
-        <h2 className="font-raleway text-5xl text-blue-600 py-4">{title}</h2>
+        <h2 className="font-raleway text-5xl text-blue-600 py-4 ">{title}</h2>
         <p className=" font-quickSand text-2xl">{information}</p>
         {link ? (
           <Link href={link.linkRef}>
