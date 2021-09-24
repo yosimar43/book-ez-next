@@ -3,9 +3,10 @@ import Head from "next/head";
 import Image from "next/image";
 import { NavBar } from "../components/homePage/NavBar";
 import { FeaturesAppDescriptions } from "../components/homePage/FeaturesAppDescriptions";
-import cohete from "../public/cohete.png";
 import JumpText from "../components/JumpText";
 import { IoIosArrowDropdown } from "react-icons/io";
+import cohete from "../public/cohete.png";
+import undraw_Online_learning_re_qw08 from "../public/undraw_Online_learning_re_qw08.svg";
 
 const Home: NextPage = () => {
   return (
@@ -40,13 +41,24 @@ const Home: NextPage = () => {
           cardContent={{
             reverse: true,
             title: "¿Que es book-ez?",
-            information: "Es una plataforma exclusiva para el colegio ",
+            information:
+              "Es una plataforma, que busca mejorar la enseñansa en el colegio",
             alt: "Imagen cohete",
             image: cohete,
             link: {
               linkRef: "/",
               linkText: "Saber mas ",
             },
+          }}
+        />
+        <FeaturesAppDescriptions
+          cardContent={{
+            reverse: false,
+            title: "¿Como funciona?",
+            information:
+              "Usando la virtualidad como una herramienta para enseñar, creamos un entorno facil de usar para todos.",
+            alt: "Ilustracion vectorial de estudiante",
+            image: undraw_Online_learning_re_qw08,
           }}
         />
       </div>
