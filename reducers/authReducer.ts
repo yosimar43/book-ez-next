@@ -1,7 +1,9 @@
+import { LOGIN_OUT, NEW_LOGIN } from "../types/authTypes";
+
 const defaultState: {
-  userCredentials: object | null;
+  getUserCredentials: object | null;
 } = {
-  userCredentials: null,
+  getUserCredentials: null,
 };
 
 const authReducer = (
@@ -9,6 +11,13 @@ const authReducer = (
   action: { type: string; payload?: object }
 ) => {
   switch (action.type) {
+    case NEW_LOGIN:
+      return action.payload;
+
+    case LOGIN_OUT: {
+      return { userCredentials: null };
+    }
+
     default:
       return state;
   }

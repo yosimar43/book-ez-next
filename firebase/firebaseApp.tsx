@@ -12,5 +12,4 @@ export default function firebaseApp() {
   };
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  console.log(app);
 }
