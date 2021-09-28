@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   firebaseApp();
   return (
     <Provider store={store}>
-      <ToastContainer />
+      <ToastContainer limit={1} />
       <Component {...pageProps} />
     </Provider>
   );
