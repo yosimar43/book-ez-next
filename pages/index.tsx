@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import { NavBar } from "../components/homePage/NavBar";
 import { FeaturesAppDescriptions } from "../components/homePage/FeaturesAppDescriptions";
 import JumpText from "../components/JumpText";
