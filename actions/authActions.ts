@@ -12,7 +12,18 @@ export const authUserAction = (userCredentials: any): object => {
       dispatch(authUser({ getUserCredentials }));
     } catch (error) {
       dispatch(authUser(null));
-      toast.error("El correo o la contraseña son equivocadas");
+      toast.dismiss();
+
+      toast.error("El correo o la contraseña son invalidas", {
+        position: "top-center",
+        theme: "light",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 };

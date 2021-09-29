@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/dist/client/router";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +8,7 @@ import { useEffect } from "react";
 import { rutes } from "../helpers/rutes";
 import { toast } from "react-toastify";
 import { FaFacebook } from "react-icons/fa";
+import astronauta from "../public/astronauta.png";
 
 export type Inputs = {
   email: string;
@@ -26,11 +28,12 @@ const LoginPage = () => {
     router.push(rutes.principalPage);
   }, [user]);
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    toast.dismiss();
     if (!data.email.trim() || !data.password.trim()) {
-      toast.error("LLena todos los campos del formulario", {
+      toast.error("LLena todos los campos", {
         position: "top-center",
         theme: "light",
         autoClose: 5000,
@@ -40,16 +43,21 @@ const LoginPage = () => {
         draggable: true,
         progress: undefined,
       });
+      reset();
       return;
     }
     authUser(data);
+    reset();
   };
 
   //
 
   return (
     <>
-      <div className="min-h-screen flex flex-col items-center justify-center bg-blue-300">
+      <div className="min-h-screen flex  items-center justify-center relative ">
+        <div className="absolute botton-0 right-0">
+          <Image src={astronauta} />
+        </div>
         <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
           <div className="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">
             Login To Your Account
