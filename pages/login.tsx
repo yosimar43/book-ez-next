@@ -1,21 +1,14 @@
+import Link from "next/link";
 import { useRouter } from "next/dist/client/router";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { authUserAction } from "../actions/authActions";
-import useLocalStorage from "use-local-storage";
 import { useEffect } from "react";
 import { rutes } from "../helpers/rutes";
 import { toast } from "react-toastify";
 import { FaFacebook } from "react-icons/fa";
-const formDefaultData: {
-  email: string;
-  password: string;
-} = {
-  email: "",
-  password: "",
-};
 
-type Inputs = {
+export type Inputs = {
   email: string;
   password: string;
 };
@@ -24,21 +17,18 @@ const LoginPage = () => {
   const router = useRouter();
   const authUser = (user: object) => dispatch(authUserAction(user));
 
-  const [userLocalStorage, setUser] = useLocalStorage<string>("user", "null");
-
-  const user = useSelector((state) => state.auth.getUserCredentials);
+  const user = useSelector((state) => state.auth?.getUserCredentials);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (JSON.parse(userLocalStorage)) {
-      router.push(rutes.principalPage);
-    }
-    setUser(JSON.stringify(user));
+    if (!user) return;
+
+    router.push(rutes.principalPage);
   }, [user]);
 
   const { register, handleSubmit } = useForm();
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
     if (!data.email.trim() || !data.password.trim()) {
       toast.error("LLena todos los campos del formulario", {
         position: "top-center",
@@ -54,9 +44,8 @@ const LoginPage = () => {
     }
     authUser(data);
   };
-  // onSubmit={handleSubmit(onSubmit)}
-  // {...register("email")}
-  // {...register("password")}
+
+  //
 
   return (
     <>
@@ -79,7 +68,7 @@ const LoginPage = () => {
             </div>
           </div>
           <div className="mt-10">
-            <form action="#">
+            <form action="" onSubmit={handleSubmit(onSubmit)}>
               <div className="flex flex-col mb-6">
                 <label
                   htmlFor="email"
@@ -92,9 +81,9 @@ const LoginPage = () => {
                     <svg
                       className="h-6 w-6"
                       fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
@@ -103,6 +92,7 @@ const LoginPage = () => {
                   </div>
 
                   <input
+                    {...register("email")}
                     id="email"
                     type="email"
                     name="email"
@@ -124,9 +114,9 @@ const LoginPage = () => {
                       <svg
                         className="h-6 w-6"
                         fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
                       >
@@ -136,6 +126,7 @@ const LoginPage = () => {
                   </div>
 
                   <input
+                    {...register("password")}
                     id="password"
                     type="password"
                     name="password"
@@ -145,15 +136,12 @@ const LoginPage = () => {
                 </div>
               </div>
 
-              <div className="flex items-center mb-6 -mt-4">
-                <div className="flex ml-auto">
-                  <a
-                    href="#"
-                    className="inline-flex text-xs sm:text-sm text-blue-500 hover:text-blue-700"
-                  >
-                    Forgot Your Password?
+              <div className="flex items-center mb-6 -mt-4 justify-center pt-4">
+                <Link href="#">
+                  <a className=" text-center text-xs sm:text-sm text-blue-500 hover:text-blue-700 w-full">
+                    ¿Olvidaste la contraseña?
                   </a>
-                </div>
+                </Link>
               </div>
 
               <div className="flex w-full">
@@ -166,9 +154,9 @@ const LoginPage = () => {
                     <svg
                       className="h-6 w-6"
                       fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
                     >
@@ -180,26 +168,24 @@ const LoginPage = () => {
             </form>
           </div>
           <div className="flex justify-center items-center mt-6">
-            <a
-              href="#"
-              target="_blank"
-              className="inline-flex items-center font-bold text-blue-500 hover:text-blue-700 text-xs text-center"
-            >
-              <span>
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a66 0 0112 0v1H3v-1z" />
-                </svg>
-              </span>
-              <span className="ml-2">You don't have an account?</span>
-            </a>
+            <Link href={rutes.newAcount}>
+              <a className="inline-flex items-center font-bold text-blue-500 hover:text-blue-700 text-xs text-center">
+                <span>
+                  <svg
+                    className="h-6 w-6"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a66 0 0112 0v1H3v-1z" />
+                  </svg>
+                </span>
+                <span className="ml-2">¿No tienes cuenta?</span>
+              </a>
+            </Link>
           </div>
         </div>
       </div>

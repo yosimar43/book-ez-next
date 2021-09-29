@@ -1,4 +1,8 @@
-import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  getAuth,
+} from "firebase/auth";
 
 export const firebaseGetUser = async (email: string, password: string) => {
   try {
@@ -9,6 +13,19 @@ export const firebaseGetUser = async (email: string, password: string) => {
     );
     return credential;
   } catch (error) {
-    return null;
+    throw error;
+  }
+};
+
+export const firebaseAddNewUser = async (email: string, password: string) => {
+  try {
+    const credential = await createUserWithEmailAndPassword(
+      getAuth(),
+      email,
+      password
+    );
+    return credential;
+  } catch (error) {
+    throw error;
   }
 };
