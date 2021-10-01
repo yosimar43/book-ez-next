@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import { firebaseGetUser } from "../firebase/firebaseAuth";
-import { NEW_LOGIN } from "../types/authTypes";
+import { NEW_LOGIN, LOGIN_OUT } from "../types/authTypes";
 
 export const authUserAction = (userCredentials: any): object => {
   return async (dispatch: any) => {
@@ -31,4 +31,14 @@ export const authUserAction = (userCredentials: any): object => {
 const authUser = (userCredentials: any): object => ({
   type: NEW_LOGIN,
   payload: userCredentials,
+});
+
+export const logOutAction = () => {
+  return (dispatch: any) => {
+    dispatch(logOutUser());
+  };
+};
+
+const logOutUser = () => ({
+  type: LOGIN_OUT,
 });
