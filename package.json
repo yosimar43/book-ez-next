@@ -27,7 +27,8 @@
     "redux-thunk": "^2.3.0",
     "tailwindcss": "^2.2.15",
     "typed.js": "^2.0.12",
-    "use-local-storage": "^2.2.4"
+    "use-local-storage": "^2.2.4",
+    "uuidv4": "^6.2.12"
   },
   "devDependencies": {
     "@types/react": "17.0.21",
