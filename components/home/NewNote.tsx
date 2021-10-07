@@ -2,7 +2,6 @@ import { useState } from "react";
 import { GrPowerReset } from "react-icons/gr";
 
 const NewNotes = () => {
-
   const initialState = {
     titulo: "",
     nota: "",
@@ -29,7 +28,7 @@ const NewNotes = () => {
           maxLength={40}
           name="titulo"
           type="text"
-          className="border-none bg-transparent w-full block h-auto"
+          className="bg-transparent w-full block h-auto outline-none"
           autoComplete="off"
           placeholder="¿Comenzar una nueva nota?"
           value={titulo}
