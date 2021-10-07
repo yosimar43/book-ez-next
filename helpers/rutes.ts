@@ -3,6 +3,7 @@ type Rutes = {
   login: string;
   principalPage: string;
   newAcount: string;
+  notePage: string;
 };
 
 export const rutes: Rutes = {
@@ -10,4 +11,5 @@ export const rutes: Rutes = {
   login: "/login",
   newAcount: "/register",
   principalPage: "/home",
+  notePage: "/home/notes",
 };

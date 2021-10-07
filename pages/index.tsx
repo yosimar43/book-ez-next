@@ -17,13 +17,13 @@ const Home: NextPage = () => {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap"
-          rel="stylesheet"
+  rel="stylesheet"
         />
         <link rel="icon" href="/favicon.svg" />
       </Head>
-      <div className="w-full min-h-screen max-w-full overflow-x-hidden">
+      <div className="w-full min-h-screen overflow-x-hidden ">
         <NavBar />
-        <div className="w-full h-max-content mb-8">
+        <div className="w-full h-max-content mb-8 ">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path
               fill="#0099ff"
@@ -48,6 +48,26 @@ const Home: NextPage = () => {
               linkRef: "/",
               linkText: "Saber mas ",
             },
+          }}
+        />
+        <FeaturesAppDescriptions
+          cardContent={{
+            reverse: false,
+            title: "¿Como funciona?",
+            information:
+              "Usando la virtualidad como una herramienta para enseñar, creamos un entorno facil de usar para todos.",
+            alt: "Ilustracion vectorial de estudiante",
+            image: undraw_Online_learning_re_qw08,
+          }}
+        />
+        <FeaturesAppDescriptions
+          cardContent={{
+            reverse: false,
+            title: "¿Como funciona?",
+            information:
+              "Usando la virtualidad como una herramienta para enseñar, creamos un entorno facil de usar para todos.",
+            alt: "Ilustracion vectorial de estudiante",
+            image: undraw_Online_learning_re_qw08,
           }}
         />
         <FeaturesAppDescriptions

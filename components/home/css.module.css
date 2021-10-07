@@ -1,0 +1,18 @@
+.listado {
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.tarea {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 0.7rem 2rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  -webkit-box-shadow: 0px 4px 10px -3px rgba(117, 117, 117, 1);
+  -moz-box-shadow: 0px 4px 10px -3px rgba(117, 117, 117, 1);
+  box-shadow: 0px 4px 10px -3px rgba(117, 117, 117, 1);
+}

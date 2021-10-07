@@ -26,16 +26,13 @@ export const FeaturesAppDescriptions: NextPage<CardFeatures> = ({
 
   useEffect(() => {
     const initCardAnimation = () => {
-      const animation = gsap
-        .timeline()
-        .fromTo("img", { opacity: 0 }, { delay: 1, opacity: 1, duration: 0.5 })
-        .fromTo(
-          ".text",
-          {
-            scale: 0,
-          },
-          { scale: 1, duration: 1 }
-        );
+      const animation = gsap.timeline().fromTo(
+        ".text",
+        {
+          scale: 0,
+        },
+        { scale: 1, duration: 1 }
+      );
     };
     if (isHoverCard) {
       initCardAnimation();
@@ -59,16 +56,8 @@ export const FeaturesAppDescriptions: NextPage<CardFeatures> = ({
     <div
       onMouseEnter={() => setIsHoverCard(true)}
       onMouseLeave={() => setIsHoverCard(false)}
-      className={`w-11/12 relative p-4 flex flex-wrap justify-evenly rounded-lg items-stretch shadow-md h-auto mx-auto my-8  ${isReverse} overflow-hidden`}
+      className={`w-11/12 relative p-4 flex flex-wrap justify-evenly  bg-white rounded-lg items-stretch shadow-md h-auto mx-auto my-12  ${isReverse} overflow-hidden`}
     >
-      <div className="svg w-full h-full z-10 bg-red-50 absolute opacity-100 duration-1000 transition-all hover:opacity-0">
-        <Image
-          src={stackedSteps}
-          alt="Icono vectorial escaleras"
-          layout="responsive"
-        />
-      </div>
-
       <div className="w-96 h-96 rounded-3xl overflow-hidden img ">
         <Image src={image} alt={alt} layout="responsive" />
       </div>

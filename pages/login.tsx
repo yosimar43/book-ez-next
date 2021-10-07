@@ -58,7 +58,7 @@ const LoginPage = () => {
         <div className="absolute botton-0 right-0">
           <Image src={astronauta} />
         </div>
-        <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
+        <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md z-10">
           <div className="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">
             Login To Your Account
           </div>
