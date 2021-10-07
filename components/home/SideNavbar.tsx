@@ -4,7 +4,7 @@ import ProyectsLists from "./ProjectList";
 
 const SideNavbar: NextPage = () => {
   return (
-    <aside className="w-min pt-4 px-4 bg-white flex-col flex font-quickSand">
+    <aside className="w-min pt-4 px-4 bg-white flex-col flex font-quickSand min-w-[250px]">
       <NuevoProjecto />
       <h2 className="text-center my-4 ">Tus clases</h2>
       <ProyectsLists />
