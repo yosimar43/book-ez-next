@@ -1,23 +1,32 @@
 import type { NextPage } from "next";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-const NewTask: NextPage = () => {
-  //   useEffect(() => {
-  //     tareaActual === null
-  //       ? setTarea({
-  //         taskName: "",
-  //         complete: false,
-  //       })
-  //       : setTarea(tareaActual);
-  //   }, [tareaActual]);
-  //
-  const proyecto = useSelector((state) => state.projects.proyecto);
+import {
+  addNewTaskAction,
+  updateTaskAction,
+} from "../../actions/projectsActions";
 
+const NewTask: NextPage = () => {
   const [tarea, setTarea] = useState({
     taskName: "",
     complete: false,
   });
+  const dispatch = useDispatch();
+
+  const tareaActual = useSelector((state) => state.projects.tarea);
+  const proyecto = useSelector((state) => state.projects.proyecto);
+  const updateTask = () => dispatch(updateTaskAction(tarea));
+  const addNewTask = () => dispatch(addNewTaskAction(tarea));
+
+  useEffect(() => {
+    tareaActual === null
+      ? setTarea({
+        taskName: "",
+        complete: false,
+      })
+      : setTarea(tareaActual);
+  }, [tareaActual]);
 
   const notifyErrorName = () => {
     toast.dismiss();
@@ -43,6 +52,24 @@ const NewTask: NextPage = () => {
     event.preventDefault();
     toast.dismiss();
     if (tarea.taskName.trim() === "") return notifyErrorName();
+    // addNewTask();
+    // setTarea({
+    //   taskName: "",
+    //   complete: false,
+    // });
+    if (tareaActual === null) {
+      addNewTask();
+      setTarea({
+        taskName: "",
+        complete: false,
+      });
+    } else {
+      updateTask();
+      setTarea({
+        taskName: "",
+        complete: false,
+      });
+    }
   };
 
   if (!proyecto) return null;
@@ -64,8 +91,7 @@ const NewTask: NextPage = () => {
         <input
           type="submit"
           className="p-2 px-5 outline-none bg-white text-black text-lg rounded-lg my-4 w-2/5"
-          // value={tareaActual ? "Editar tarea" : "agregar tarea"}
-          value="Agregar tarea"
+          value={tareaActual ? "Editar tarea" : "agregar tarea"}
         />
       </form>
     </div>

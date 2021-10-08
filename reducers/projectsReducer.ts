@@ -83,7 +83,7 @@ const projectsReducer = (
 
     case AGREGAR_TAREA: {
       let proyectoNewTask = [...state.proyecto.tasks, action.payload];
-      let projectupdate = { ...state.proyecto, task: proyectoNewTask };
+      let projectupdate = { ...state.proyecto, tasks: proyectoNewTask };
 
       return {
         ...state,
@@ -96,7 +96,7 @@ const projectsReducer = (
     case ELIMINAR_TAREA: {
       let projectupdate = {
         ...state.proyecto,
-        tareasProyecto: state.proyecto?.tasks.filter(
+        tasks: state.proyecto?.tasks.filter(
           (tarea) => tarea.id !== action.payload
         ),
       };
@@ -135,7 +135,7 @@ const projectsReducer = (
       );
       let projectupdate = {
         ...state.proyecto,
-        tareasProyecto: proyectoNewTask,
+        tasks: proyectoNewTask,
       };
 
       return {

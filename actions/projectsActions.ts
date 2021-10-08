@@ -63,6 +63,46 @@ const eliminarProyecto = (proyectId: string) => ({
   payload: proyectId,
 });
 
+export const addNewTaskAction = (task: object) => {
+  return (dispatch: any) => dispatch(agregarTarea(task));
+};
+
+const agregarTarea = (tarea: object) => {
+  tarea.id = `${uuidv4()}`;
+
+  return { type: AGREGAR_TAREA, payload: tarea };
+};
+
+export const EditTaskStateAction = (tarea: object) => {
+  return (dispatch: any) => dispatch(editarEstadoTarea(tarea));
+};
+
+const editarEstadoTarea = (tarea: object) => {
+  tarea.complete = !tarea.complete;
+  return { type: ESTADO_TAREA, payload: tarea };
+};
+export const editTaskAction = (tarea: object) => {
+  return (dispatch: any) => dispatch(editarTarea(tarea));
+};
+const editarTarea = (tarea: any) => ({ type: EDITAR_TAREA, payload: tarea });
+
+export const updateTaskAction = (task: object) => {
+  return (dispatch: any) => dispatch(actualizarTarea(task));
+};
+
+const actualizarTarea = (tarea: object) => ({
+  type: ACTUALIZAR_TAREA,
+  payload: tarea,
+});
+
+export const deleteTaskAction = (taskID: string) => {
+  return (dispatch: any) => dispatch(eliminarTarea(taskID));
+};
+const eliminarTarea = (tareaId: string) => ({
+  type: ELIMINAR_TAREA,
+  payload: tareaId,
+});
+
 export const addNewNoteAction = (note: object) => {
   return (dispatch: any) => dispatch(agregarNota(note));
 };
@@ -91,22 +131,16 @@ const agregarNota = (nota: object) => {
 };
 
 export const deleteNoteAction = (noteID: string) => {
-  return (dispatch: any) => dispatch(eliminarNota(noteID))
+  return (dispatch: any) => dispatch(eliminarNota(noteID));
+};
 
-
-}
-
-const eliminarNota = (notaID: string) =>
-({
+const eliminarNota = (notaID: string) => ({
   type: ELIMINAR_NOTA,
-  payload: notaID
-})
+  payload: notaID,
+});
 
 export const searchNotesAction = (textToSearch: string) => {
-  return (dispatch: any) => dispatch(buscarNotas(textToSearch))
+  return (dispatch: any) => dispatch(buscarNotas(textToSearch));
+};
 
-}
-
-const buscarNotas = (texto: string) =>
-  ({ type: BUSQUEDA, payload: texto })
-
+const buscarNotas = (texto: string) => ({ type: BUSQUEDA, payload: texto });
