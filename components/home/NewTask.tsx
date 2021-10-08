@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 const NewTask: NextPage = () => {
   //   useEffect(() => {
@@ -11,6 +12,8 @@ const NewTask: NextPage = () => {
   //       : setTarea(tareaActual);
   //   }, [tareaActual]);
   //
+  const proyecto = useSelector((state) => state.projects.proyecto);
+
   const [tarea, setTarea] = useState({
     taskName: "",
     complete: false,
@@ -42,6 +45,7 @@ const NewTask: NextPage = () => {
     if (tarea.taskName.trim() === "") return notifyErrorName();
   };
 
+  if (!proyecto) return null;
   return (
     <div className="bg-gray-600 px-8 flex justify-center">
       <form

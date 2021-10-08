@@ -1,22 +1,27 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { GrPowerReset } from "react-icons/gr";
-
+import { addNewNoteAction } from "../../actions/projectsActions";
+const initialState = {
+  title: "",
+  note: "",
+};
 const NewNotes = () => {
-  const initialState = {
-    titulo: "",
-    nota: "",
-  };
+  const dispatch = useDispatch();
   const [notaS, setNota] = useState(initialState);
 
-  const { titulo, nota } = notaS;
+  const { title, note } = notaS;
 
-  const handlerChange = (event) =>
+  const addNewNote = (note: any) => dispatch(addNewNoteAction(note));
+
+  const handlerChange = (event: any) =>
     setNota({ ...notaS, [event.target.name]: event.target.value });
 
   const handlerReset = () => setNota(initialState);
 
-  const handlerSubmit = (event) => {
+  const handlerSubmit = (event: any) => {
     event.preventDefault();
+    addNewNote(notaS);
     handlerReset();
   };
 
@@ -26,21 +31,21 @@ const NewNotes = () => {
         <input
           required
           maxLength={40}
-          name="titulo"
+          name="title"
           type="text"
           className="bg-transparent w-full block h-auto outline-none"
           autoComplete="off"
           placeholder="¿Comenzar una nueva nota?"
-          value={titulo}
+          value={title}
           onChange={handlerChange}
         />
         <textarea
-          name="nota"
+          name="note"
           autoComplete="off"
           required
           onDoubleClick={handlerSubmit}
           className="resize-none bg-transparent outline-none h-3/5 w-full block "
-          value={nota}
+          value={note}
           onChange={handlerChange}
         />
         <div className="flex justify-end h-auto ">

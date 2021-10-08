@@ -1,29 +1,30 @@
 import type { NextPage } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineFileSearch } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { searchNotesAction } from "../../actions/projectsActions";
 
 const SearhNote: NextPage = () => {
   const [note, setNote] = useState({
     busqueda: "",
   });
+  const dispatch = useDispatch();
 
-  //   useEffect(() => {
-  //
-  //     if (note.busqueda.trim() === "") {
-  //       buscarNotas("")
-  //     }
-  //
-  //     buscarNotas(note.busqueda)
-  //
-  //   }, [note.busqueda])
-  //
+  const searchNote = (text: string) => dispatch(searchNotesAction(text));
+
+  useEffect(() => {
+    if (note.busqueda.trim() === "") {
+      searchNote("");
+    }
+
+    searchNote(note.busqueda);
+  }, [note.busqueda]);
 
   const handlerChange = (event) =>
     setNote({ [event.target.name]: event.target.value });
 
   const handlerBlur = () => {
-    // if (note.busqueda.length === 0)
-    // buscarNotas("")
+    if (note.busqueda.length === 0) searchNote("");
   };
 
   const handlerSubmit = (event) => {
@@ -31,7 +32,7 @@ const SearhNote: NextPage = () => {
 
     if (note.busqueda === "") return;
 
-    // buscarNotas(note.busqueda.trim())
+    searchNote(note.busqueda.trim());
   };
 
   return (

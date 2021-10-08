@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
 import { MdDeleteSweep, MdDateRange } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { deleteNoteAction } from "../../actions/projectsActions";
 
 const Note = ({ apunte }) => {
-  const { titulo, nota, fecha, id } = apunte;
+  const { title, note, date, id } = apunte;
 
+  const dispatch = useDispatch();
 
+  const deleteNote = () => dispatch(deleteNoteAction(id));
 
   const getLink = (text) => {
     const isLinkRegExp = new RegExp(
@@ -34,18 +38,20 @@ const Note = ({ apunte }) => {
       <div className="flex justify-between h-auto">
         <div className="flex items-center">
           <MdDateRange />
-          <p>{fecha}</p>
+          <p>{date}</p>
         </div>
 
         <div className="flex items-center">
-          <button>Eliminar</button>
+          <button type="button" onClick={deleteNote}>
+            Eliminar
+          </button>
           <MdDeleteSweep size="2rem" />
         </div>
       </div>
 
-      <h3 className="text-left   m-0">{titulo}</h3>
+      <h3 className="text-left   m-0">{title}</h3>
 
-      <p className=" h-11/12 m-0" dangerouslySetInnerHTML={getLink(nota)}></p>
+      <p className=" h-11/12 m-0" dangerouslySetInnerHTML={getLink(note)}></p>
     </div>
   );
 };

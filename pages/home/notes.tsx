@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logOutAction } from "../../actions/authActions";
 import Logo from "../../components/Logo";
 import NavBar from "../../components/NavBar";
-import HomeNotes from "../../components/HomeNotes.tsx";
+import HomeNotes from "../../components/HomeNotes";
 
 const Notes: NextPage = () => {
   const user: object = useSelector((state) => state.auth.getUserCredentials);
