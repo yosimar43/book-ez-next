@@ -48,7 +48,7 @@ const TaskList: NextPage = () => {
           }
 
           proyecto.tareasProyecto = reorder(
-            proyecto.tareasProyecto,
+            proyecto.tasks,
             source.index,
             destination.index
           );
